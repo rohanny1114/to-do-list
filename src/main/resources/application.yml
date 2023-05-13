@@ -1,8 +1,18 @@
 # Spring data Source
 Spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/?userSSL=false&allowPuvlicKeyRetrieval=true&serverTimezone=UTC
+    platform: tasks
+    url: jdbc:mysql://127.0.0.1:3306/tasks?userSSL=false&allowPuvlicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: Kim00468?
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show-sql: true
+        format-sql: true
+
+
 
