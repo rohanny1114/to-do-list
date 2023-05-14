@@ -76,9 +76,11 @@ canvas {
    font-size: 1.6em;
 }
 
+
+
 input:checked + label {
-   color: grey;
-   text-decoration: line-through;
+   color: grey!important;
+   text-decoration: line-through !important;
 }
 
 

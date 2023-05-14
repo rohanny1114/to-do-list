@@ -33,5 +33,17 @@ public class ToDoController {
 
         return "redirect:/";
     }
+
+    @PostMapping("/emptyTodo")
+    public String emptyTodo(@RequestParam("todo") String todo){
+        System.out.println("[System] Empty table");
+
+        // Empty a table
+        ToDo toDo = new ToDo();
+        toDo.setTodo(todo);
+        toDoRepository.truncateTable();
+        return "redirect:/";
+    }
+
 }
 
