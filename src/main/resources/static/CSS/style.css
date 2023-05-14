@@ -1,4 +1,7 @@
-*{ margin: 0; padding: 0;}
+
+*{ margin: 0; padding: 0;
+   /* border: 1px solid red; */
+}
 
 
 canvas {
@@ -11,27 +14,72 @@ canvas {
 
 .container {
    background-color: whitesmoke;
-   height: 40%;
-   width: 30%;
+   width: 40%;
    padding: 10px;
 
    position:absolute;
    z-index:0;
-   top: 50%;
+   top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.notes-close {
+   text-align: end;
+}
+.resetList {
+  font-size: 1.8rem;
+  width: 6%;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+  background-color: #e7e7e7;
+}
 
 
-.notes-title, .notes-form {
+.notes-title {
+   font-size: 2em;
    text-align: center;
+}
+
+.notes-form {
+   display: flex;
+   justify-content: center;
+}
+
+
+.input {
+   width: 80%;
+   font-size: 1.2rem;
+   border-radius: 8px;
+   padding: 0.8%;
+   margin: 2%;
+   margin-left: 4.6%;
+}
+
+.btnInput {
+   width: 32px;
+   height: 32px;
+   cursor: pointer;
+}
+
+.notes-list {
+   margin: 4%;
+}
+.radio {
+   height: 20px;
+   width: 20px;
+   cursor: pointer;
+}
+
+.task {
    padding: 10px;
+   font-size: 1.6em;
 }
 
-.btn {
-   padding: 2px 6px;
+input:checked + label {
+   color: grey;
+   text-decoration: line-through;
 }
-
 
 
 

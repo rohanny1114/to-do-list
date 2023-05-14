@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To Do</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="/static/CSS/style.css">
-    <!-- Confetti JS -->
-    <script src="/static/js/confetti.js" defer></script>
+    <link rel="stylesheet" href="/CSS/style.css">
+
 </head>
 <body>
-
 <main>
     <canvas class="confetti" id="canvas"></canvas>
     <div class="container">
         <div class="box">
             <div class="notes">
+                <div class="notes-close">
+                    <button type="button" class="resetList">X</button>
+                </div>
                 <div class="notes-title">
                     <h1>To Do List</h1>
                 </div>
-                <div class="notes-form">
-                    <form action="/addTodo" method="post">
-                        <input name="todo" type="text"/>
-                        <input type="submit" value="+" class="btn"/>
-                    </form>
-                </div>
-                <hr>
+                <form action="/addTodo" method="post" >
+                    <div class="note-form">
+                        <input name="todo" type="text" class="input"/>
+                        <input type="submit" value="+" class="btnInput">
+                    </div>
+                </form>
+                <hr />
                 <div class="notes-list">
                     <div class="task" th:each="todo : ${todos}">
-                        <input type="checkbox" class="radio" id="done">
+                        <input type="checkbox" class="radio done" id="done">
                         <span class="label-text" th:text="${todo.todo}"/>
                     </div>
                 </div>
@@ -36,5 +37,7 @@
         </div>
     </div>
 </main>
+<!-- Confetti JS -->
+<script src="/js/confetti.js" defer></script>
 </body>
 </html>

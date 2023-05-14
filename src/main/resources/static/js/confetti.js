@@ -1,38 +1,28 @@
-// Source code from: https://www.codehim.com/animation-effects/javascript-confetti-explosion-effect/
-
-//-----------Var Inits--------------
-done = document.getElementById("done");
-
-
-canvas = document.getElementById("canvas");
-ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-cx = ctx.canvas.width / 2;
-cy = ctx.canvas.height / 2;
-
+// // Source code from: https://www.codehim.com/animation-effects/javascript-confetti-explosion-effect/
+// JavaScript code
+let radios = document.querySelectorAll('.radio');
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
 let confetti = [];
 const confettiCount = 300;
 const gravity = 0.5;
 const terminalVelocity = 100;
 const drag = 0.075;
 const colors = [
-{ front: 'red', back: 'darkred' },
-{ front: 'green', back: 'darkgreen' },
-{ front: 'blue', back: 'darkblue' },
-{ front: 'yellow', back: 'darkyellow' },
-{ front: 'orange', back: 'darkorange' },
-{ front: 'pink', back: 'darkpink' },
-{ front: 'purple', back: 'darkpurple' },
-{ front: 'turquoise', back: 'darkturquoise' }];
+  { front: 'red', back: 'darkred' },
+  { front: 'green', back: 'darkgreen' },
+  { front: 'blue', back: 'darkblue' },
+  { front: 'yellow', back: 'darkyellow' },
+  { front: 'orange', back: 'darkorange' },
+  { front: 'pink', back: 'darkpink' },
+  { front: 'purple', back: 'darkpurple' },
+  { front: 'turquoise', back: 'darkturquoise' }
+];
+let isRadioSelected = false; // Flag to track if any radio button has been selected
 
-
-//-----------Functions--------------
 resizeCanvas = () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  cx = ctx.canvas.width / 2;
-  cy = ctx.canvas.height / 2;
 };
 
 randomRange = (min, max) => Math.random() * (max - min) + min;
@@ -43,27 +33,27 @@ initConfetti = () => {
       color: colors[Math.floor(randomRange(0, colors.length))],
       dimensions: {
         x: randomRange(10, 20),
-        y: randomRange(10, 30) },
-
+        y: randomRange(10, 30)
+      },
       position: {
         x: randomRange(0, canvas.width),
-        y: canvas.height - 1 },
-
+        y: canvas.height - 1
+      },
       rotation: randomRange(0, 2 * Math.PI),
       scale: {
         x: 1,
-        y: 1 },
-
+        y: 1
+      },
       velocity: {
         x: randomRange(-25, 25),
-        y: randomRange(0, -50) } });
-
-
+        y: randomRange(0, -50)
+      }
+    });
   }
 };
 
-//---------Render-----------
 render = () => {
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   confetti.forEach((confetto, index) => {
@@ -104,18 +94,27 @@ render = () => {
   window.requestAnimationFrame(render);
 };
 
-//---------Execution--------
-render();
+resizeCanvas(); // Initialize canvas size
 
-//----------Resize----------
-window.addEventListener('resize', function () {
+// Event listener for window resize
+window.addEventListener('resize', () => {
   resizeCanvas();
 });
 
-//------------Click------------
-
-done.addEventListener('click', function () {
-  if(document.getElementById('done').checked){
-    initConfetti();
-  }
+// Event listener for radio button click
+radios.forEach((radio) => {
+  radio.addEventListener('change', () => {
+    if (radio.checked) {
+      isRadioSelected = true; // Set the flag to true
+      initConfetti();
+    }
+  });
 });
+
+// Initial render if a radio button has been selected
+if (isRadioSelected) {
+  initConfetti();
+}
+
+// Start rendering
+render();
